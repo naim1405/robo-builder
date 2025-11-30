@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboBuilder - Design Your Custom Robot</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🤖</span>
+                <h1>RoboBuilder</h1>
+            </div>
+            <nav class="nav">
+                <a href="#builder" class="nav-link active">Builder</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#api" class="nav-link">API</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Build Your Dream Robot</h2>
+                <p class="hero-subtitle">Choose from dozens of parts to create a unique robot companion. Save, share, and bring your creation to life.</p>
+                <button class="btn btn-primary" onclick="scrollToBuilder()">Start Building</button>
+            </div>
+            <div class="hero-visual">
+                <div class="robot-preview-large">
+                    <div class="preview-head">👁️</div>
+                    <div class="preview-body">⚙️</div>
+                    <div class="preview-arms">
+                        <span>🦾</span>
+                        <span>🦾</span>
+                    </div>
+                    <div class="preview-legs">⚡</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Builder Section -->
+        <section id="builder" class="builder-section">
+            <h2 class="section-title">Robot Builder</h2>
+            
+            <div class="builder-layout">
+                <!-- Robot Preview -->
+                <div class="preview-panel">
+                    <div class="preview-card">
+                        <h3>Your Robot</h3>
+                        <div id="robotPreview" class="robot-preview">
+                            <div class="preview-part" id="previewHead">
+                                <span class="part-icon">❓</span>
+                                <span class="part-label">Head</span>
+                            </div>
+                            <div class="preview-part" id="previewBody">
+                                <span class="part-icon">❓</span>
+                                <span class="part-label">Body</span>
+                            </div>
+                            <div class="preview-part" id="previewArms">
+                                <span class="part-icon">❓</span>
+                                <span class="part-label">Arms</span>
+                            </div>
+                            <div class="preview-part" id="previewLegs">
+                                <span class="part-icon">❓</span>
+                                <span class="part-label">Legs</span>
+                            </div>
+                            <div class="preview-part" id="previewPower">
+                                <span class="part-icon">❓</span>
+                                <span class="part-label">Power</span>
+                            </div>
+                        </div>
+                        <div class="robot-stats">
+                            <div class="stat">
+                                <span class="stat-label">Speed</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" id="statSpeed" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Power</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" id="statPower" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Durability</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" id="statDurability" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parts Selection -->
+                <div class="parts-panel">
+                    <div class="parts-card">
+                        <div class="robot-name-input">
+                            <label for="robotName">Robot Name</label>
+                            <input type="text" id="robotName" placeholder="Enter robot name..." value="Guardian-X">
+                        </div>
+
+                        <div class="parts-categories">
+                            <!-- Head -->
+                            <div class="part-category">
+                                <h4>
+                                    <span class="category-icon">🧠</span>
+                                    Head
+                                </h4>
+                                <div class="parts-grid" id="headParts">
+                                    <div class="part-option" data-part="head" data-value="sensor_head">
+                                        <span class="option-icon">👁️</span>
+                                        <span class="option-name">Sensor Head</span>
+                                    </div>
+                                    <div class="part-option" data-part="head" data-value="combat_head">
+                                        <span class="option-icon">😠</span>
+                                        <span class="option-name">Combat Head</span>
+                                    </div>
+                                    <div class="part-option" data-part="head" data-value="dome_head">
+                                        <span class="option-icon">🔮</span>
+                                        <span class="option-name">Dome Head</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="part-category">
+                                <h4>
+                                    <span class="category-icon">🛡️</span>
+                                    Body
+                                </h4>
+                                <div class="parts-grid" id="bodyParts">
+                                    <div class="part-option" data-part="body" data-value="armored_body">
+                                        <span class="option-icon">⚙️</span>
+                                        <span class="option-name">Armored Body</span>
+                                    </div>
+                                    <div class="part-option" data-part="body" data-value="stealth_body">
+                                        <span class="option-icon">🌑</span>
+                                        <span class="option-name">Stealth Body</span>
+                                    </div>
+                                    <div class="part-option" data-part="body" data-value="tank_body">
+                                        <span class="option-icon">🏰</span>
+                                        <span class="option-name">Tank Body</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Arms -->
+                            <div class="part-category">
+                                <h4>
+                                    <span class="category-icon">💪</span>
+                                    Arms
+                                </h4>
+                                <div class="parts-grid" id="armsParts">
+                                    <div class="part-option" data-part="arms" data-value="hydraulic_arms">
+                                        <span class="option-icon">🦾</span>
+                                        <span class="option-name">Hydraulic Arms</span>
+                                    </div>
+                                    <div class="part-option" data-part="arms" data-value="precision_arms">
+                                        <span class="option-icon">🤏</span>
+                                        <span class="option-name">Precision Arms</span>
+                                    </div>
+                                    <div class="part-option" data-part="arms" data-value="weapon_arms">
+                                        <span class="option-icon">⚔️</span>
+                                        <span class="option-name">Weapon Arms</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Legs -->
+                            <div class="part-category">
+                                <h4>
+                                    <span class="category-icon">🦿</span>
+                                    Legs
+                                </h4>
+                                <div class="parts-grid" id="legsParts">
+                                    <div class="part-option" data-part="legs" data-value="tracked_legs">
+                                        <span class="option-icon">⚡</span>
+                                        <span class="option-name">Tracked Legs</span>
+                                    </div>
+                                    <div class="part-option" data-part="legs" data-value="bipedal_legs">
+                                        <span class="option-icon">🦵</span>
+                                        <span class="option-name">Bipedal Legs</span>
+                                    </div>
+                                    <div class="part-option" data-part="legs" data-value="hover_unit">
+                                        <span class="option-icon">🌪️</span>
+                                        <span class="option-name">Hover Unit</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Power -->
+                            <div class="part-category">
+                                <h4>
+                                    <span class="category-icon">🔋</span>
+                                    Power Source
+                                </h4>
+                                <div class="parts-grid" id="powerParts">
+                                    <div class="part-option" data-part="power" data-value="fusion_core">
+                                        <span class="option-icon">☢️</span>
+                                        <span class="option-name">Fusion Core</span>
+                                    </div>
+                                    <div class="part-option" data-part="power" data-value="solar_cells">
+                                        <span class="option-icon">☀️</span>
+                                        <span class="option-name">Solar Cells</span>
+                                    </div>
+                                    <div class="part-option" data-part="power" data-value="arc_reactor">
+                                        <span class="option-icon">💠</span>
+                                        <span class="option-name">Arc Reactor</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-primary btn-large" id="buildBtn" onclick="buildRobot()">
+                                <span>🔨</span> Build Robot
+                            </button>
+                            <button class="btn btn-secondary" onclick="resetBuilder()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title">Robot Gallery</h2>
+            <div id="robotGallery" class="robot-gallery">
+                <div class="gallery-placeholder">
+                    <span class="placeholder-icon">🤖</span>
+                    <p>No robots built yet. Create your first robot!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Documentation Section -->
+        <section id="api" class="api-section">
+            <h2 class="section-title">API Documentation</h2>
+            <div class="api-docs">
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="method post">POST</span>
+                        <code>/api/robot</code>
+                    </div>
+                    <p>Build a custom robot</p>
+                    <pre><code>{
+  "name": "Guardian-X",
+  "head": "sensor_head",
+  "body": "armored_body",
+  "arms": "hydraulic_arms",
+  "legs": "tracked_legs",
+  "power": "fusion_core"
+}</code></pre>
+                </div>
+
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="method get">GET</span>
+                        <code>/api/robot/:id</code>
+                    </div>
+                    <p>Get a robot by ID</p>
+                </div>
+
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="method get">GET</span>
+                        <code>/api/parts</code>
+                    </div>
+                    <p>List all available robot parts</p>
+                </div>
+
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="method delete">DELETE</span>
+                        <code>/api/robot/:id</code>
+                    </div>
+                    <p>Delete a robot</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 RoboBuilder. Build robots with style.</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
